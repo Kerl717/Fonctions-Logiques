@@ -1,1 +1,0 @@
-Fait par RANDRIANARISOA Arovanjanahary Razafindravahatra
