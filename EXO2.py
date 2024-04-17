@@ -1,10 +1,10 @@
 """
-	Ce code est basé sur la méthode de Quine-McCluskey (aussi appellée "Méthode Tabulaire") qui est elle même basée sur la méthode du
+	Ce code est basé sur la méthode de Quine-McCluskey (aussi appelée "Méthode Tabulaire") qui est elle même basée sur la méthode du
 tableau de Karnaugh mais est cependant une version plus simple à implémentée que la méthode originale surtout pour un nombre élevée de 
-variables.
+variables (au delà de 4 variables, la méthode classique de Karnaugh est difficile à mettre en oeuvre).
  	Cette méthode vient des recherches de Willard V. Quine sur la simplification des fonctions logiques via le tableau de Karnaugh. Il 
-réussira à traduire cette méthode dans un algorithme qu'il est possible d'implémenter sur ordinateur et plus tard la méthode sera étendue 
-par Edward J. McCluskey.
+réussira à traduire cette méthode (celle de Karnaugh) dans un algorithme qu'il est possible d'implémenter sur ordinateur et plus tard la 
+méthode sera étendue par Edward J. McCluskey.
 	En bref, cette méthode est en fait une variation algorithmique du tableau de Karnaugh.
 """
 
@@ -63,7 +63,7 @@ def get_prime_implicants(minterms):
 
 	return prime_implicants
 
-# Renvoie la liste des valeurs couvertes par une liste d'implcants premier
+# Renvoie la liste des valeurs couvertes par un implicant premier appelé "subsets"
 def get_subset(implicant):
 	subset = []
 	star_count = implicant.count("*")
@@ -82,7 +82,7 @@ def get_subset(implicant):
 		subset.append(tmp)
 	return subset
 
-
+# Renvoie la liste des valeurs couvertes par une liste d'implicants premiers
 def get_all_subsets(implicants):
 	all_minterms = []
 	for implicant in implicants:
@@ -90,7 +90,7 @@ def get_all_subsets(implicants):
 
 	return all_minterms
 
-
+# Renvoie les minterms d'une liste de subsets
 def get_all_minterms(subsets):
 	all_minterms = []
 	for subset in subsets:
@@ -100,7 +100,7 @@ def get_all_minterms(subsets):
 	all_minterms = sorted(all_minterms)
 	return all_minterms
 
-
+# Minimise la fonction passée en paramètre
 def minimize(expression):
 	minterms = get_minterms(expression)
 	variables = get_variables(expression)
@@ -130,7 +130,7 @@ def minimize(expression):
 			if minterms[i][j] == "1":
 				output += variables[j]
 			elif minterms[i][j] == "0":
-				output += variables[j] + "\u0304"
+				output += "!" + variables[j]
 			else:
 				continue
 			output += "."
