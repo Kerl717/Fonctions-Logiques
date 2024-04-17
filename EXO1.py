@@ -60,7 +60,7 @@ def disjonctive_canon(results, variables):
 				if tab[i][j] == '1':
 					tmp += variables[j]
 				elif tab[i][j] == '0':
-					tmp += variables[j] + "\u0304"
+					tmp += "!" + variables[j]
 				tmp += "."
 			if tmp[-1] == ".":
 				tmp = tmp[:-1]
@@ -87,7 +87,7 @@ def conjonctive_canon(results, variables):
 			tmp = "("
 			for j in range(len(tab[i])):
 				if tab[i][j] == '1':
-					tmp += variables[j] + "\u0304"
+					tmp += "!" + variables[j]
 				elif tab[i][j] == '0':
 					tmp += variables[j]
 				tmp += " + "
