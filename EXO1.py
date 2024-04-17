@@ -102,7 +102,7 @@ def conjonctive_canon(results, variables):
 
 
 def main():
-	expression = input("Entrez l'expression de votre fonction (ex: A + !(B.C)): ")
+	expression = input("Entrez l'expression de votre fonction (ex: A + !(B.C)^D): ")
 	print("\nTable de vérité")
 	results, variables = truth_table(expression)
 
