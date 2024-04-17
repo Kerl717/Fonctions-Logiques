@@ -5,6 +5,7 @@ variables.
  	Cette méthode vient des recherches de Willard V. Quine sur la simplification des fonctions logiques via le tableau de Karnaugh. Il 
 réussira à traduire cette méthode dans un algorithme qu'il est possible d'implémenter sur ordinateur et plus tard la méthode sera étendue 
 par Edward J. McCluskey.
+	En bref, cette méthode est en fait une variation algorithmique du tableau de Karnaugh.
 """
 
 # Retourne la liste des variables
