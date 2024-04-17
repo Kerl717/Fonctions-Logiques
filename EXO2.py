@@ -1,7 +1,17 @@
+"""
+	Ce code est basé sur la méthode de Quine-McCluskey (aussi appellée "Méthode Tabulaire") qui est elle même basée sur la méthode du
+tableau de Karnaugh mais est cependant une version plus simple à implémentée que la méthode originale surtout pour un nombre élevée de 
+variables.
+ 	Cette méthode vient des recherches de Willard V. Quine sur la simplification des fonctions logiques via le tableau de Karnaugh. Il 
+réussira à traduire cette méthode dans un algorithme qu'il est possible d'implémenter sur ordinateur et plus tard la méthode sera étendue 
+par Edward J. McCluskey.
+"""
+
+# Retourne la liste des variables
 def get_variables(expression):
 	return sorted(set(filter(str.isalpha, expression)))
 
-
+# Evalue la fonction pour des valeurs données
 def evaluate(expression, var_dict):
 	expression = expression.replace("+", " or ")
 	expression = expression.replace(".", " and ")
@@ -11,7 +21,7 @@ def evaluate(expression, var_dict):
 		expression = expression.replace(var, val)
 	return eval(expression)
 
-
+# Récupère les mintermes sous la forme d'une liste. Ex: A + B => [1, 2, 3]
 def get_minterms(expression):
 	minterms = []
 	variables = get_variables(expression)
@@ -28,7 +38,7 @@ def get_minterms(expression):
 			minterms.append(c)
 	return minterms
 
-
+# Renvoi la liste des implicants premiers
 def get_prime_implicants(minterms):
 	prime_implicants = []
 	used = [0 for i in range(len(minterms))]
@@ -52,7 +62,7 @@ def get_prime_implicants(minterms):
 
 	return prime_implicants
 
-
+# Renvoie la liste des valeurs couvertes par une liste d'implcants premier
 def get_subset(implicant):
 	subset = []
 	star_count = implicant.count("*")
